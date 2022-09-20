@@ -1,7 +1,7 @@
 from typing import Any, Dict
-from api.models import Model
+from app.schemas.model import Model
 from fastapi import Body, Depends
-from api.dependencies import get_model
+from app.api.dependencies import get_model
 
 
 class ModelAPI:

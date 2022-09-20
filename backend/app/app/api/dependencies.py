@@ -1,10 +1,11 @@
 import yaml
 import joblib
-from api.models import Model
+from app.schemas.model import Model
 
+import os
 
 def get_model() -> Model:
-    with open("config.yaml") as file:
+    with open("../CONFIG.yaml") as file:
         CONFIG = yaml.safe_load(file)
 
     current_model = joblib.load(CONFIG["ML"]["CURRENT_MODEL"])
