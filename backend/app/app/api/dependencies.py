@@ -5,7 +5,7 @@ from app.schemas.model import Model
 import os
 
 def get_model() -> Model:
-    with open("../CONFIG.yaml") as file:
+    with open("app/CONFIG.yaml") as file:
         CONFIG = yaml.safe_load(file)
 
     current_model = joblib.load(CONFIG["ML"]["CURRENT_MODEL"])
