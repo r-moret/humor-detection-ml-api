@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from app.schemas.input_data import InputData
 from pandas import DataFrame
 from pydantic import BaseModel, validator
 from sklearn.pipeline import Pipeline
@@ -13,8 +13,8 @@ class Model(BaseModel):
             raise ValueError("Model has no predict method.")
         return model
 
-    def predict(self, input_data: Dict[str, Any]) -> float:
-        input_dataframe = DataFrame.from_records([input_data])
+    def predict(self, input_data: InputData) -> float:
+        input_dataframe = DataFrame.from_records([input_data.dict()])
 
         pred_value = self.model.predict(input_dataframe)
 
