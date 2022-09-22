@@ -4,14 +4,14 @@ EXPOSE 80
 
 WORKDIR /code
 
-COPY ./requirements.txt /code/requirements.txt
+COPY ./requirements.txt ./requirements.txt
 
 RUN python -m pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir -r /code/requirements.txt
+RUN pip install --no-cache-dir -r ./requirements.txt
 
-COPY ./ml /code/ml
-COPY ./app /code/app
+COPY ./ml ./ml
+COPY ./app ./app
 
-RUN pip install /code/app
+RUN pip install ./app
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
