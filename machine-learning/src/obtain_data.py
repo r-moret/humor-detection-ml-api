@@ -22,8 +22,8 @@ print("Download succesful!")
 dataset = pd.read_csv(DATA_FOLDER / KAGGLE_DATASET_NAME)
 train, test = train_test_split(dataset, test_size=0.2, random_state=SPLIT_SEED)
 
-train.to_csv(DATA_FOLDER / "train.csv")
-test.to_csv(DATA_FOLDER / "test.csv")
+train.to_csv(DATA_FOLDER / "train.csv", index=False)
+test.to_csv(DATA_FOLDER / "test.csv", index=False)
 os.remove(DATA_FOLDER / KAGGLE_DATASET_NAME)
 
 print(f'\nSplitted "{KAGGLE_DATASET_NAME}" on "{DATA_FOLDER}"')
