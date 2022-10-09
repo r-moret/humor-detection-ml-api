@@ -1,0 +1,1 @@
+from humor.humor_model import HumorModel
