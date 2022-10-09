@@ -56,5 +56,9 @@ class HumorModel(BaseModel):
 
         return tokenized_sentences.data
 
+    def push_to_hub(self, model_name: str) -> None:
+        self.bert.push_to_hub(model_name)
+        self.tokenizer.push_to_hub(model_name)
+
     class Config:
         arbitrary_types_allowed = True
