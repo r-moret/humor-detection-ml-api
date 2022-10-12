@@ -1,4 +1,4 @@
-FROM python:3.10.6
+FROM python:3.10.7
 
 EXPOSE 80
 
@@ -10,7 +10,9 @@ RUN python -m pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r ./requirements.txt
 
 COPY ./app ./app
+COPY ./machine-learning ./machine-learning
 
-RUN pip install .
+RUN pip install ./app
+RUN pip install ./machine-learning
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
