@@ -2,6 +2,6 @@ from setuptools import setup
 
 setup(
     name="local_app",
-    version="1.0",
+    version="0.1",
     packages=['app', 'app.api', 'app.schemas', "app.api.endpoints"]
 )

@@ -1,9 +1,2 @@
-machine-learning/data
-machine-learning/.env-ml
-machine-learning/src/local_humor.egg-info
-machine-learning/src/humor/__pycache__
-
 backend/.env
-
-backend/app/local_app.egg-info
-backend/app/__pycache__
+backend/machine-learning/data
