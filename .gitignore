@@ -1,2 +1,4 @@
 backend/.env
 backend/machine-learning/data
+backend/**/*.egg-info
+backend/**/__pycache__

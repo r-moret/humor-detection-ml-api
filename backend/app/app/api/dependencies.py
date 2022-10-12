@@ -1,33 +1,21 @@
-import json
 from typing import Any, Dict
 
-import joblib
 import yaml
+from humor import HumorModel
 
-from app.schemas.metrics_set import MetricsSet
-from app.schemas.model import Model
+import os
 
 
 def open_config() -> Dict[str, Any]:
-    with open("app/CONFIG.yaml") as file:
-        CONFIG = yaml.safe_load(file)
+    print(os.getcwd())
+    with open("backend/config.yaml") as file:
+        config = yaml.safe_load(file)
 
-    return CONFIG
+    return config
 
 
-def get_model() -> Model:
-    CONFIG = open_config()
+def get_model() -> HumorModel:
+    config = open_config()
 
-    current_model = joblib.load(CONFIG["ML"]["CURRENT"]["MODEL"])
-    model = Model(model=current_model)
-
+    model = HumorModel(config["model-repository"])
     return model
-
-
-def get_metrics() -> MetricsSet:
-    CONFIG = open_config()
-
-    with open(CONFIG["ML"]["CURRENT"]["METRICS"]) as file:
-        metrics_set = json.load(file)
-
-    return MetricsSet(**metrics_set)

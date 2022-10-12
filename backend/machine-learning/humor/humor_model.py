@@ -3,10 +3,11 @@ from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import pandas as pd
 import tensorflow as tf
-from huggingface_hub import HfApi
+from huggingface_hub import HfApi, hf_hub_download
 from pydantic import BaseModel
 from sklearn.metrics import accuracy_score, f1_score
 from transformers import BertTokenizer, TFBertForSequenceClassification
+
 
 TextCorpus = Union[List[str], pd.Series]
 LabelsSequence = Union[List[int], List[bool], pd.Series]
@@ -19,9 +20,15 @@ class HumorModel(BaseModel):
     metrics: Optional[Dict]
 
     def __init__(self, model_name: str, **data: Any) -> None:
+        metrics_path = hf_hub_download(repo_id=model_name, filename="metrics.json")
+        
+        with open(metrics_path) as f:  # type: ignore
+            loaded_metrics = json.load(f)
+
         super().__init__(
             bert=TFBertForSequenceClassification.from_pretrained(model_name),
             tokenizer=BertTokenizer.from_pretrained(model_name),
+            metrics=loaded_metrics,
             **data,
         )
 
