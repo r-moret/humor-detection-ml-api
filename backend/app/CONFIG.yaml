@@ -1,4 +1,0 @@
-ML:
-  CURRENT:
-    MODEL: ml/18092022_205016/model.joblib
-    METRICS: ml/18092022_205016/metrics.json

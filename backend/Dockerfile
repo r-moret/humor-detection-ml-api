@@ -9,9 +9,8 @@ COPY ./requirements.txt ./requirements.txt
 RUN python -m pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r ./requirements.txt
 
-COPY ./ml ./ml
 COPY ./app ./app
 
-RUN pip install ./app
+RUN pip install .
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
