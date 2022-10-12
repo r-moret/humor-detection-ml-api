@@ -7,7 +7,6 @@ import os
 
 
 def open_config() -> Dict[str, Any]:
-    print(os.getcwd())
     with open("backend/config.yaml") as file:
         config = yaml.safe_load(file)
 
