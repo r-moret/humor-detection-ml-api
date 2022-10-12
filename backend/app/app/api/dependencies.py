@@ -3,8 +3,18 @@ from typing import Any, Dict
 import yaml
 from humor import HumorModel
 
-import os
+def timer(func):
+    import time
+    import functools
 
+    @functools.wraps(func)
+    def wrapper_decorator(*args, **kwargs):
+        t0 = time.time()
+        value = func(*args, **kwargs)
+        t1 = time.time()
+        print(f"{func.__name__.upper()} ELAPSED: {t1 - t0} seconds")
+        return value
+    return wrapper_decorator
 
 def open_config() -> Dict[str, Any]:
     with open("backend/config.yaml") as file:
@@ -13,8 +23,4 @@ def open_config() -> Dict[str, Any]:
     return config
 
 
-def get_model() -> HumorModel:
-    config = open_config()
-
-    model = HumorModel(config["model-repository"])
-    return model
+model = HumorModel(open_config()["model-repository"])
