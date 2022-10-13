@@ -18,7 +18,7 @@ def train(
     *,
     test_data: Optional[Tuple[pd.Series, pd.Series]] = None,
 ) -> None:
-    model = HumorModel("bert-base-uncased")
+    model = HumorModel("albert-base-v2")
 
     model.train(train_data, test_set=test_data)
 

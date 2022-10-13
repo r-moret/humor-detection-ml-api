@@ -6,7 +6,8 @@ import tensorflow as tf
 from huggingface_hub import HfApi, hf_hub_download
 from pydantic import BaseModel
 from sklearn.metrics import accuracy_score, f1_score
-from transformers import BertTokenizer, TFBertForSequenceClassification
+from transformers import AlbertTokenizer, TFAlbertForSequenceClassification
+from transformers.utils import EntryNotFoundError
 
 
 TextCorpus = Union[List[str], pd.Series]
@@ -15,19 +16,22 @@ MetricFunction = Callable[[LabelsSequence, LabelsSequence], float]
 
 
 class HumorModel(BaseModel):
-    bert: TFBertForSequenceClassification
-    tokenizer: BertTokenizer
+    bert: TFAlbertForSequenceClassification
+    tokenizer: AlbertTokenizer
     metrics: Optional[Dict]
 
     def __init__(self, model_name: str, **data: Any) -> None:
-        metrics_path = hf_hub_download(repo_id=model_name, filename="metrics.json")
-        
-        with open(metrics_path) as f:  # type: ignore
-            loaded_metrics = json.load(f)
+        try:
+            metrics_path = hf_hub_download(repo_id=model_name, filename="metrics.json")
+            
+            with open(metrics_path) as f:  # type: ignore
+                loaded_metrics = json.load(f)
+        except EntryNotFoundError as e:
+            loaded_metrics = None
 
         super().__init__(
-            bert=TFBertForSequenceClassification.from_pretrained(model_name),
-            tokenizer=BertTokenizer.from_pretrained(model_name),
+            bert=TFAlbertForSequenceClassification.from_pretrained(model_name),
+            tokenizer=AlbertTokenizer.from_pretrained(model_name),
             metrics=loaded_metrics,
             **data,
         )
