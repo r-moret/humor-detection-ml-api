@@ -17,7 +17,7 @@ def timer(func):
     return wrapper_decorator
 
 def open_config() -> Dict[str, Any]:
-    with open("backend/config.yaml") as file:
+    with open("./config.yaml") as file:
         config = yaml.safe_load(file)
 
     return config

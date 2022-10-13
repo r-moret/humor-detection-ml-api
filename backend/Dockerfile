@@ -4,6 +4,7 @@ EXPOSE 80
 
 WORKDIR /code
 
+COPY ./config.yaml ./config.yaml
 COPY ./requirements.txt ./requirements.txt
 
 RUN python -m pip install --no-cache-dir --upgrade pip
