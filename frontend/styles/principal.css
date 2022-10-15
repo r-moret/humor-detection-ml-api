@@ -7,3 +7,12 @@
 div[data-testid="stDecoration"] {
     visibility: hidden;
 }
+
+/* Footer alignment (Made with ...) */
+footer {
+    text-align: right;
+}
+
+footer > a[href="//streamlit.io"] {
+    color: var(--primaryColor)
+}
