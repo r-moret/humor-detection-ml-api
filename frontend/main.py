@@ -25,8 +25,13 @@ with st.sidebar:
         menu_icon="back",
         options=[Menu.OPTION1, Menu.OPTION2],
         styles={
-            "nav-link-selected": {"color": config["theme"]["accentTextColor"]},
-            "container": {"background-color": config["theme"]["secondaryBackgroundColor"]}
+            "nav-link-selected": {
+                "color": config["theme"]["accentTextColor"],
+                "font-weight": 600,
+            },
+            "container": {
+                "background-color": config["theme"]["secondaryBackgroundColor"]
+            },
         },
     )
 

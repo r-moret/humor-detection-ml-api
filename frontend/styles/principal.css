@@ -15,6 +15,30 @@ div[data-testid="stHorizontalBlock"]> div:first-child > div > div > div > div {
     justify-content: end; 
 } 
 
+div.stButton > button {
+    width: 25%;
+    font-weight: 600;
+}
+
+div.stButton > button:first-child {
+    background-color: var(--primaryColor);
+    color: var(--accentTextColor);
+}
+
+div.stButton > button:hover {
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+}
+
+div.stButton > button:focus:not(#fakeId) {
+    background-color: var(--primaryColor);
+    color: var(--accentTextColor);
+}
+
+div.block-container {
+    padding-bottom: 5rem;
+}
+
 /* Footer alignment (Made with ...) */
 footer {
     text-align: right;
