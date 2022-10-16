@@ -8,6 +8,13 @@ div[data-testid="stDecoration"] {
     visibility: hidden;
 }
 
+/* Only left button (Detect button) */
+/* Justify it to the right in order to be align with the other button */
+div[data-testid="stHorizontalBlock"]> div:first-child > div > div > div > div {
+    display: flex;
+    justify-content: end; 
+} 
+
 /* Footer alignment (Made with ...) */
 footer {
     text-align: right;
