@@ -2,6 +2,9 @@ from typing import Dict
 
 import streamlit as st
 
+from utils.css import light_input_text
+from utils.state import clear_state
+
 
 class PredictView:
     @classmethod
@@ -28,10 +31,17 @@ class PredictView:
                 "Sentence to detect",
                 placeholder="Some funny joke here... or maybe just not",
                 label_visibility="collapsed",
+                key="sentence",
             )
 
             st.text("")
 
             l_col, r_col = st.columns(2)
             detect = l_col.button("Detect")
-            clear = r_col.button("Clear")
+            r_col.button("Clear", on_click=clear_state("sentence"))
+
+            if detect:
+                if sentence == "pos":
+                    light_input_text("green")
+                elif sentence == "neg":
+                    light_input_text("red")

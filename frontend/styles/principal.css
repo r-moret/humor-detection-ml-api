@@ -8,6 +8,14 @@ div[data-testid="stDecoration"] {
     visibility: hidden;
 }
 
+/* Default text-input border */
+div[data-baseweb="input"] {
+    border: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: var(--secondaryBackgroundColor);
+}
+
 /* Only left button (Detect button) */
 /* Justify it to the right in order to be align with the other button */
 div[data-testid="stHorizontalBlock"]> div:first-child > div > div > div > div {
@@ -15,26 +23,31 @@ div[data-testid="stHorizontalBlock"]> div:first-child > div > div > div > div {
     justify-content: end; 
 } 
 
+/* Size and text of the buttons */
 div.stButton > button {
     width: 25%;
     font-weight: 600;
 }
 
+/* Color of the buttons */
 div.stButton > button:first-child {
     background-color: var(--primaryColor);
     color: var(--accentTextColor);
 }
 
+/* Style of the button when the mouse is hover it */
 div.stButton > button:hover {
     background-color: var(--backgroundColor);
     color: var(--textColor);
 }
 
+/* Style of the button when is focused */
 div.stButton > button:focus:not(#fakeId) {
     background-color: var(--primaryColor);
     color: var(--accentTextColor);
 }
 
+/* Reduce empty size until the end of the page */
 div.block-container {
     padding-bottom: 5rem;
 }
@@ -44,6 +57,7 @@ footer {
     text-align: right;
 }
 
+/* Color of the Streamlit link of the footer */
 footer > a[href="//streamlit.io"] {
     color: var(--primaryColor)
 }
