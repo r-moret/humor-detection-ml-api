@@ -55,7 +55,7 @@ class PredictView:
                 with st.spinner("Computing sentence..."):
                     body = {"sentences": [sentence]}
                     response = requests.post(
-                        "http://localhost:80/predictions", json=body
+                        "http://backend:8080/predictions", json=body
                     )
                     is_humor = response.json()[0][0]
 

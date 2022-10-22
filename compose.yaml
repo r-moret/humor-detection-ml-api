@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: rmoret/humor-detection-frontend:test
+    ports:
+      - "80:8501"
+  backend:
+    image: rmoret/humor-detection-backend:test
