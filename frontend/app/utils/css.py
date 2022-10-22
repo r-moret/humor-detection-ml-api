@@ -8,7 +8,7 @@ from typing import Optional
 def load_css():
     config = load_config()
 
-    with open("styles/principal.css") as f:
+    with open("./app/styles/principal.css") as f:
         st.markdown(
             f"""
                 <style>
