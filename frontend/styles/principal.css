@@ -16,6 +16,10 @@ div[data-baseweb="input"] {
     border-color: var(--secondaryBackgroundColor);
 }
 
+div.stSpinner > div{
+    justify-content: center;
+}
+
 /* Only left button (Detect button) */
 /* Justify it to the right in order to be align with the other button */
 div[data-testid="stHorizontalBlock"]> div:first-child > div > div > div > div {

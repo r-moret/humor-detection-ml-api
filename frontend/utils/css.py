@@ -2,6 +2,8 @@ import streamlit as st
 
 from .config import load_config
 
+from typing import Optional
+
 
 def load_css():
     config = load_config()
@@ -34,3 +36,13 @@ def light_input_text(color: str):
         """
 
     st.markdown(css, unsafe_allow_html=True)
+
+
+def result_text_str(text: str, color: Optional[str] = None):
+    return (
+        f"""
+            <h3 style='text-align: center; font-size: 200%; {"color: " + color if color else ""}'>
+                {text}
+            </h3>
+        """
+    )
